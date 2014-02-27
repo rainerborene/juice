@@ -9,7 +9,7 @@ import (
 func TestInline(t *testing.T) {
 	html := readFile("./examples/example.html")
 	rules := ParseFile("./examples/example.css")
-	inline, err := Inline(strings.NewReader(html), rules)
-	assert.Nil(t, err)
-	assert.Contains(t, inline, "style")
+	output := Inline(strings.NewReader(html), rules)
+	assert.Contains(t, output, "style")
+	assert.NotContains(t, output, "class")
 }

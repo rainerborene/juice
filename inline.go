@@ -3,9 +3,12 @@ package juice
 import (
 	"github.com/PuerkitoBio/goquery"
 	"io"
+	"regexp"
 )
 
-func Inline(source io.Reader, rules Rules) (string, error) {
+var ClassRegexp, _ = regexp.Compile("class=\"[^\"]+\"( )?")
+
+func Inline(source io.Reader, rules Rules) string {
 	doc, err := goquery.NewDocumentFromReader(source)
 
 	if err != nil {
@@ -33,5 +36,10 @@ func Inline(source io.Reader, rules Rules) (string, error) {
 		})
 	}
 
-	return doc.Html()
+	html, err := doc.Html()
+	if err != nil {
+		panic(err)
+	}
+
+	return ClassRegexp.ReplaceAllString(html, "")
 }
