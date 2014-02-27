@@ -18,13 +18,3 @@ func (r Rule) Style() string {
 	}
 	return strings.Join(buf, " ")
 }
-
-func (r Rule) Extend(style string) string {
-	var styles map[string]string
-
-	for _, property := range r.Properties {
-		styles[property.Name] = property.Value
-	}
-
-	return ""
-}
