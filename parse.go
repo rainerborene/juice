@@ -1,8 +1,8 @@
 package juice
 
-func ParseFile(path string) Rules {
+func Parse(content []byte) Rules {
 	var letter byte
-	content := []byte(readFile(path))
+
 	state := new(State)
 
 	for letter, content = stripLetter(content); letter != 0; letter, content = stripLetter(content) {
@@ -10,4 +10,10 @@ func ParseFile(path string) Rules {
 	}
 
 	return state.rules
+}
+
+
+func ParseFile(path string) Rules {
+	content := []byte(readFile(path))
+	return Parse(content)
 }
