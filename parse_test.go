@@ -6,15 +6,15 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	blocks := ParseFile("./examples/style.css")
+	blocks := ParseFile("./examples/example.css")
 
 	body := blocks[0]
-	h1 := blocks[1]
+	container := blocks[1]
 	margin := body.Properties[0]
-	fontSize := h1.Properties[0]
+	fontSize := container.Properties[0]
 
 	assert.Equal(t, body.Selector, "body")
-	assert.Equal(t, h1.Selector, "h1")
+	assert.Equal(t, container.Selector, ".container")
 
 	assert.Equal(t, margin.Name, "margin")
 	assert.Equal(t, margin.Value, " 0")

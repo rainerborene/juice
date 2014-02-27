@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.container {
+  font-size: 21px;
+}
+
+body .container {
+  width: 800px;
+}

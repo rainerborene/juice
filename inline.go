@@ -29,7 +29,7 @@ func Inline(source io.Reader, rules Rules) (string, error) {
 				style = rule.Style()
 			}
 
-			setAttributeValue("style", style, s.Get(i))
+			setAttributeValue("style", style, s.Get(0))
 		})
 	}
 
