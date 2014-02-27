@@ -4,6 +4,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"io"
 )
+
 func Inline(source io.Reader, rules Rules) (string, error) {
 	doc, err := goquery.NewDocumentFromReader(source)
 

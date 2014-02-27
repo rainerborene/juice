@@ -7,26 +7,18 @@ import (
 )
 
 func setAttributeValue(attrName string, val string, n *html.Node) {
-	var exists bool
-
 	if n == nil {
 		return
 	}
 
 	for i := range n.Attr {
-		attr := &n.Attr[i]
-		if attr.Key == attrName {
+		if attr := &n.Attr[i]; attr.Key == attrName {
 			attr.Val = val
-			exists = true
 			return
 		}
 	}
 
-	if !exists {
-		n.Attr = append(n.Attr, html.Attribute{Key: attrName, Val: val})
-	}
-
-	return
+	n.Attr = append(n.Attr, html.Attribute{Key: attrName, Val: val})
 }
 
 func stripLetter(content []byte) (byte, []byte) {

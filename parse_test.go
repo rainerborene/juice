@@ -6,7 +6,7 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	blocks := Parse("./examples/style.css")
+	blocks := ParseFile("./examples/style.css")
 
 	body := blocks[0]
 	h1 := blocks[1]
